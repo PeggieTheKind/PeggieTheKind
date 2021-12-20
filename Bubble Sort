@@ -1,0 +1,65 @@
+// BubbleSort.cpp
+// Coder: Peggie
+#include <iostream>
+#include <array>
+using namespace std;
+
+void swap(int* left, int* right) // simply swaps the left side to the right side.
+{
+	int temp = *left;
+	*left = *right;
+	*right = temp;
+
+}
+
+void bubbleSort(int array[], int size)
+{
+	//some varis
+	int i, j;
+	cout << "\n\nProcessing: \n";
+	for (i = 0; i < size - 1; i++)
+	{
+		for (j = 0; j < size - i - 1; j++) //loop all items till one away from the end (ensures we do not go out bounds on the array)
+		{
+			if (array[j] > array[j + 1]) { //if array at J is larger than the next digit in the array
+
+				//swaps the two items - & passes the memory address (creates pointers
+				swap(&array[j], &array[j + 1]);
+
+				//if you want to see the progress of the sort uncomment this section
+				for (int x = 0; x < size; ++x)
+				{
+					cout << array[x] << " | ";
+				}
+				cout << endl;
+
+			}
+		}
+	}
+}
+
+
+int main()
+{
+    //title
+    cout << "Bubble Sort!\n";
+
+    //array created to be sorted
+    int array[] = {12, 11, 4, 6, 7, 8, 3, 2, 1, 616, 343, 352, 44444};
+
+    //output array
+    cout << "\nUnsorted array!\n";
+    for (auto x : array)
+        cout << x <<  " | ";
+	
+
+	//trigger sort
+	int sizeOf = sizeof(array) / sizeof(array[0]);// find size
+	bubbleSort(array, sizeOf);
+
+	//sorted output
+	cout << "\nSorted array!\n";
+	for (auto x : array)
+		cout << x << " | ";
+}
+
